@@ -123,6 +123,40 @@ p, .bautizo-message-texto, .frase-texto, .familia-card-names, .label, .details, 
     }
 }
 
+.carrusel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
+  margin: 1em 0 0.7em 0;
+}
+.carrusel-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #efc3e6 60%, #e8b4b8 100%);
+  border: 2px solid #E1A4C0;
+  opacity: 0.55;
+  transition: background 0.25s, opacity 0.18s, transform 0.18s;
+  cursor: pointer;
+}
+.carrusel-dot.active {
+  opacity: 1;
+  background: linear-gradient(120deg, #e8b4b8 60%, #efc3e6 100%);
+  transform: scale(1.18);
+  box-shadow: 0 2px 8px #efc3e633;
+}
+
+/* Carrusel: solo una imagen visible */
+.carrusel-img {
+  display: none !important;
+  opacity: 0 !important;
+}
+.carrusel-img.active {
+  display: block !important;
+  opacity: 1 !important;
+}
+
 /* Botón de música flotante */
 .music-float-btn {
   position: fixed;
@@ -427,4 +461,39 @@ p, .bautizo-message-texto, .frase-texto, .familia-card-names, .label, .details, 
   color: #A14B7F;
   margin-top: 0.6em;
   opacity: 0.65;
+}
+
+/* --- Reglas robustas para el carrusel de fotos --- */
+.carrusel-fotos {
+  position: relative;
+  width: 100%;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.carrusel-img {
+  display: none !important;
+  opacity: 0 !important;
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px #efc3e655;
+  border: 2.5px solid #EFC3E6;
+  background: #fff6fa;
+  object-fit: cover;
+  transition: opacity 0.4s, transform 0.3s;
+  margin: 0 auto;
+  z-index: 1;
+}
+.carrusel-img.active {
+  display: block !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 2;
+  transform: scale(1.02);
 }

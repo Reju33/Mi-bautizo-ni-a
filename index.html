@@ -55,14 +55,97 @@
       <img src="imagenes-bautizo/niña/cruz.jpg" alt="Cruz rosa" class="img-frase-lado" />
     </div>
     <hr class="separador-elegante" />
-    <!-- Galería de fotos -->
-    <div class="galeria-fotos animate-fadein">
-      <img src="imagenes-bautizo/niña/10.jpg" alt="Foto 1" />
-      <img src="imagenes-bautizo/niña/11.jpg" alt="Foto 2" />
-      <img src="imagenes-bautizo/niña/12.jpg" alt="Foto 3" />
-      <img src="imagenes-bautizo/niña/13.jpg" alt="Foto 4" />
+    <!-- Carrusel de fotos -->
+    <div class="carrusel-fotos-container animate-fadein">
+      <button class="carrusel-btn carrusel-btn-prev" aria-label="Foto anterior">&#10094;</button>
+      <div class="carrusel-fotos">
+        <img src="imagenes-bautizo/niña/10.jpg" alt="Foto 1" class="carrusel-img active" />
+        <img src="imagenes-bautizo/niña/11.jpg" alt="Foto 2" class="carrusel-img" />
+        <img src="imagenes-bautizo/niña/12.jpg" alt="Foto 3" class="carrusel-img" />
+        <img src="imagenes-bautizo/niña/13.jpg" alt="Foto 4" class="carrusel-img" />
+      </div>
+      <button class="carrusel-btn carrusel-btn-next" aria-label="Foto siguiente">&#10095;</button>
+      <div class="carrusel-dots"></div>
     </div>
     <hr class="separador-elegante" />
+    <script>
+      // Carrusel JS simple
+      const carruselImgs = document.querySelectorAll('.carrusel-img');
+      const prevBtn = document.querySelector('.carrusel-btn-prev');
+      const nextBtn = document.querySelector('.carrusel-btn-next');
+      const dotsContainer = document.querySelector('.carrusel-dots');
+      let carruselIndex = 0;
+      // Crear dots
+      let carruselDots = [];
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        carruselImgs.forEach((img, i) => {
+          const dot = document.createElement('span');
+          dot.className = 'carrusel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', 'Ver foto ' + (i + 1));
+          dot.onclick = () => {
+            carruselIndex = i;
+            showCarruselImg(carruselIndex);
+            pauseAutoPlay();
+          };
+          dotsContainer.appendChild(dot);
+        });
+        carruselDots = Array.from(dotsContainer.children);
+      }
+      function updateDots(idx) {
+        carruselDots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+      }
+      function showCarruselImg(idx) {
+        carruselImgs.forEach((img, i) => {
+          img.classList.toggle('active', i === idx);
+        });
+        updateDots(idx);
+      }
+      createDots();
+      // --- Autoplay ---
+      let autoPlayInterval = null;
+      let autoPlayPaused = false;
+      function startAutoPlay() {
+        if(autoPlayInterval) clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(() => {
+          if(!autoPlayPaused) {
+            carruselIndex = (carruselIndex + 1) % carruselImgs.length;
+            showCarruselImg(carruselIndex);
+          }
+        }, 3500);
+      }
+      function pauseAutoPlay() {
+        autoPlayPaused = true;
+        if(autoPlayInterval) clearInterval(autoPlayInterval);
+        // Reanuda después de 7 segundos sin interacción
+        setTimeout(() => { autoPlayPaused = false; startAutoPlay(); }, 7000);
+      }
+      prevBtn.onclick = () => {
+        carruselIndex = (carruselIndex - 1 + carruselImgs.length) % carruselImgs.length;
+        showCarruselImg(carruselIndex);
+        pauseAutoPlay();
+      };
+      nextBtn.onclick = () => {
+        carruselIndex = (carruselIndex + 1) % carruselImgs.length;
+        showCarruselImg(carruselIndex);
+        pauseAutoPlay();
+      };
+      // Responsive: deslizar con touch
+      let startX = null;
+      document.querySelector('.carrusel-fotos').addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+      });
+      document.querySelector('.carrusel-fotos').addEventListener('touchend', e => {
+        if(startX == null) return;
+        let diff = e.changedTouches[0].clientX - startX;
+        if(diff > 40) { prevBtn.onclick(); }
+        if(diff < -40) { nextBtn.onclick(); }
+        startX = null;
+        pauseAutoPlay();
+      });
+      // Iniciar autoplay al cargar
+      startAutoPlay();
+    </script>
     <!-- Familia: Papás y Padrinos -->
     <div class="familia-rediseño-section">
       <div class="familia-card papas-card">
