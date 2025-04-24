@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Bautizo</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Invitación de Bautizo de [Nombre de la bebé]">
+    <meta property="og:description" content="Acompáñanos a celebrar el bautizo de [Nombre de la bebé] el [Fecha]">
+    <meta property="og:image" content="imagnes/principal.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Invitación de Bautizo de [Nombre de la bebé]">
+    <meta property="twitter:description" content="Acompáñanos a celebrar el bautizo de [Nombre de la bebé] el [Fecha]">
+    <meta property="twitter:image" content="imagnes/principal.jpg">
+    <link rel="icon" type="image/png" href="imagnes/sello.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="bg-music" src="canciones/cancion.mp3" autoplay loop style="display:none;"></audio>
+    <button id="music-btn" class="music-float-btn" aria-label="Play/Pause música">
+      <i id="music-icon" class="fas fa-play"></i>
+    </button>
+    <div class="hero-image-container">
+      <img src="imagenes-bautizo/niña/2.jpg" alt="Portada Bautizo Niña" class="hero-image" />
+      <div class="hero-overlay">
+         <div class="invitation-header-sobre-imagen">
+          <h1 class="baby-name animate-slidein">[Nombre de la bebé]</h1>
+          <div class="bautizo-date animate-fadein">Sábado, 8 de Junio 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="countdown-container">
+      <div class="countdown-item">
+          <span class="countdown-number" id="days">0</span>
+          <span class="countdown-label">días</span>
+      </div>
+      <div class="countdown-item">
+          <span class="countdown-number" id="hours">0</span>
+          <span class="countdown-label">horas</span>
+      </div>
+      <div class="countdown-item">
+          <span class="countdown-number" id="minutes">0</span>
+          <span class="countdown-label">minutos</span>
+      </div>
+      <div class="countdown-item">
+          <span class="countdown-number" id="seconds">0</span>
+          <span class="countdown-label">segundos</span>
+      </div>
+    </div>
+    <!-- Frase inspiradora -->
+    <div class="frase-encuadre animate-fadein frase-encuadre-col">
+      <span class="frase-texto">"El bautizo es el primer paso hacia una vida llena de fe y amor."</span>
+      <img src="imagenes-bautizo/niña/cruz.jpg" alt="Cruz rosa" class="img-frase-lado" />
+    </div>
+    <hr class="separador-elegante" />
+    <!-- Galería de fotos -->
+    <div class="galeria-fotos animate-fadein">
+      <img src="imagenes-bautizo/niña/10.jpg" alt="Foto 1" />
+      <img src="imagenes-bautizo/niña/11.jpg" alt="Foto 2" />
+      <img src="imagenes-bautizo/niña/12.jpg" alt="Foto 3" />
+      <img src="imagenes-bautizo/niña/13.jpg" alt="Foto 4" />
+    </div>
+    <hr class="separador-elegante" />
+    <!-- Familia: Papás y Padrinos -->
+    <div class="familia-rediseño-section">
+      <div class="familia-card papas-card">
+        <div class="familia-card-icon">👨‍👩‍👧</div>
+        <div class="familia-card-label">Mis Papás</div>
+        <div class="familia-card-names">[Nombre Papá] & [Nombre Mamá]</div>
+      </div>
+      <div class="familia-separador">
+        <span class="familia-separador-icon">💗</span>
+      </div>
+      <div class="familia-card padrinos-card">
+        <div class="familia-card-icon">👼</div>
+        <div class="familia-card-label">Mis Padrinos</div>
+        <div class="familia-card-names">[Nombre Padrino] & [Nombre Madrina]</div>
+      </div>
+    </div>
+    <hr class="separador-elegante" />
+    <!-- Mensaje religioso -->
+    <div class="bautizo-message-redisenada bautizo-message-recta animate-fadein">
+      <img src="imagenes-bautizo/niña/6.jpg" alt="Decorativo oración" class="bautizo-message-img" />
+      <div class="bautizo-message-texto">Señor, hoy que me presento ante ti para ser bañada con tu amor, toma mi pequeño corazón en tus benditas manos y acompáñame siempre.</div>
+    </div>
+    <!-- Misa -->
+    <div class="section misa animate-section">
+      <span class="seccion-icon">⛪</span>
+      <div class="label">Misa</div>
+      <div class="details">12:00 pm <span class="place">Parroquia San José, Av. Central #123, CDMX</span></div>
+      <a class="map-btn" href="https://maps.google.com/?q=Parroquia+San+Jose+CDMX" target="_blank">Ver mapa</a>
+    </div>
+    <!-- Recepción -->
+    <div class="section recepcion animate-section">
+      <span class="seccion-icon">🎉</span>
+      <div class="label">Recepción</div>
+      <div class="details">2:00 pm <span class="place">Salón Rosa, Calle Fiesta #456, CDMX</span></div>
+      <a class="map-btn" href="https://maps.google.com/?q=Salón+Rosa+CDMX" target="_blank">Ver mapa</a>
+    </div>
+    <hr class="separador-elegante" />
+    <!-- Frase final -->
+    <div class="frase-encuadre animate-fadein frase-encuadre-col">
+      <span class="frase-texto">"La familia y los amigos son los ángeles que Dios nos envía para acompañarnos en la vida."</span>
+      <img src="imagenes-bautizo/niña/7.jpg" alt="Ángel decorativo" class="img-frase-lado" />
+    </div>
+    <!-- Mensaje de importancia de la asistencia -->
+    <hr class="separador-elegante" />
+    <div class="mensaje-importancia-asistencia animate-fadein">
+      Tu presencia le da sentido a este día tan especial.<br>¡Esperamos contar contigo para celebrar juntas este momento único!
+    </div>
+    <!-- Confirmación de asistencia -->
+    <div class="section confirmacion animate-section">
+      <a class="confirm-btn" href="https://wa.me/5215555555555?text=Confirmo%20mi%20asistencia%20al%20bautizo%20de%20[Nombre de la bebé]" target="_blank"><i class="fa-brands fa-whatsapp"></i> Confirmar asistencia</a>
+    </div>
+    <!-- Decoración de estrellas (opcional) -->
+    <div class="decor-stars">
+      <span class="star star1"></span>
+      <span class="star star2"></span>
+      <span class="star star3"></span>
+    </div>
+    <!-- Sección de agradecimiento -->
+    <div class="seccion-agradecimiento animate-fadein">
+      ¡Gracias por acompañarnos en este momento tan especial!<br>
+      Tu cariño y presencia hacen este día inolvidable.
+    </div>
+    <footer class="footer-invita-bonito">
+      <a href="https://wa.me/5214422820890" target="_blank" class="btn-invita-bonito animate-fadein" aria-label="Invita Bonito por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i> Invita Bonito
+      </a>
+      <div class="footer-brand">Invita Bonito · Invitaciones digitales</div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
